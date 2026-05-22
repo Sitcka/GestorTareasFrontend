@@ -1,0 +1,109 @@
+<div>
+  <div class="offcanvas-md offcanvas-end bg-body-tertiary" tabindex="-1" id="sidebarMenu"
+    aria-labelledby="sidebarMenuLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="sidebarMenuLabel">Gestor tareas</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebarMenu"
+        aria-label="Close"></button>
+    </div>
+
+    <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
+      <nav class="h-100 d-flex flex-column">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link d-flex" routerLink="/tareas" routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }">
+              <i class="bi bi-house"></i>
+              Dashboard
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link d-flex" routerLink="/tareas" routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }">
+              <i class="bi bi-list-task"></i>
+              Todas las tareas
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link d-flex" routerLink="/crear-tarea" routerLinkActive="active">
+              <i class="bi bi-plus-square"></i>
+              Nueva tarea
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link d-flex" routerLink="/completadas" routerLinkActive="active">
+              <i class="bi bi-check2-square"></i>
+              Completadas
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link d-flex" routerLink="/pendientes" routerLinkActive="active">
+              <i class="bi bi-hourglass-split"></i>
+              Pendientes
+            </a>
+          </li>
+        </ul>
+
+        <h6
+          class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-body-secondary text-uppercase">
+          <span>Organización</span>
+          <a class="link-secondary" routerLink="/categorias" aria-label="Ver categorías">
+            <i class="bi bi-folder-plus"></i>
+          </a>
+        </h6>
+
+        <ul class="nav flex-column mb-auto">
+          <li class="nav-item">
+            <a class="nav-link d-flex" routerLink="/categorias" routerLinkActive="active">
+              <i class="bi bi-folder"></i>
+              Categorías
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link d-flex" routerLink="/prioridades" routerLinkActive="active">
+              <i class="bi bi-flag"></i>
+              Prioridades
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link d-flex" routerLink="/hoy" routerLinkActive="active">
+              <i class="bi bi-calendar-event"></i>
+              Hoy
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link d-flex" routerLink="/proximas" routerLinkActive="active">
+              <i class="bi bi-calendar3"></i>
+              Próximas
+            </a>
+          </li>
+        </ul>
+
+        <hr class="my-3" />
+
+        <ul class="nav flex-column mb-auto">
+          <li class="nav-item">
+            <a class="nav-link d-flex" routerLink="/configuracion" routerLinkActive="active">
+              <i class="bi bi-gear"></i>
+              Configuración
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link d-flex" routerLink="/perfil" routerLinkActive="active">
+              <i class="bi bi-person-circle"></i>
+              Perfil
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
