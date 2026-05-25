@@ -1,8 +1,11 @@
+<!-- Property binding pasa valores a las propiedades del componente -->
+<!-- Event binding reacciona a eventos del componente -->
 <th scope="row">1</th>
-<td>Titulo</td>
-<td>Descripción</td>
-<td>Fecha de creación</td>
-<td>Fecha Límite</td>
+<td>{{titulo}}</td>
+<td>{{descripcion}}</td>
+<td>{{fechaCreacion}}</td>
+<td>{{fechaLimite}}</td>
+<td [ngClass]="tipo == 'Completada' ? 'bg-success' : 'bg-warning'" class="tipo">{{tipo}}</td>
 <td>
     <button class="btn btn-success">
         <i class="bi bi-eye-fill" style="color: white;"></i>

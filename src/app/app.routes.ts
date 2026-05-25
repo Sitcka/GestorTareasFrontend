@@ -1,17 +1,43 @@
 import { Routes } from '@angular/router';
+import { Injectable } from '@angular/core';
+import { CanActivate, Router } from '@angular/router';
+// import { AuthService } from './services/auth.service';
+import { Login } from './components/login/login';
+import { DashboardLayout } from './components/dashboard-layout/dashboard-layout';
 import { TareaList } from './components/tarea-list/tarea-list';
+// Importa aquí tus futuros componentes cuando los crees:
+// import { PerfilComponent } from './components/perfil/perfil.component';
+// import { ConfiguracionComponent } from './components/configuracion/configuracion.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'tareas', pathMatch: 'full' },
-  { path: 'tareas', component: TareaList },
-  { path: 'crear-tarea', component: TareaList },
-  { path: 'completadas', component: TareaList },
-  { path: 'pendientes', component: TareaList },
-  { path: 'categorias', component: TareaList },
-  { path: 'prioridades', component: TareaList },
-  { path: 'hoy', component: TareaList },
-  { path: 'proximas', component: TareaList },
-  { path: 'configuracion', component: TareaList },
-  { path: 'perfil', component: TareaList },
-  { path: '**', redirectTo: 'tareas' }
+  // 1. Redirección inicial
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+
+  // 2. Ruta pública (Pantalla completa)
+  { path: 'login', component: Login },
+
+  // 3. Rutas privadas protegidas por el Layout (Comparten Header y Navbar)
+  {
+    path: '',
+    component: DashboardLayout,
+    // canActivate: [
+    //   AuthGuard
+    // ],
+    // Rutas hijas que se mostrarán dentro del DashboardLayout
+    children: [
+      { path: 'tareas', component: TareaList },
+      { path: 'completadas', component: TareaList },
+      { path: 'pendientes', component: TareaList },
+      { path: 'categorias', component: TareaList },
+      { path: 'prioridades', component: TareaList },
+      { path: 'hoy', component: TareaList },
+      { path: 'proximas', component: TareaList },
+      // Cuando crees los componentes de perfil y configuración, los cambias aquí:
+      { path: 'configuracion', component: TareaList },
+      { path: 'perfil', component: TareaList }
+    ]
+  },
+
+  // 4. Comodín de seguridad
+  { path: '**', redirectTo: 'login' }
 ];
