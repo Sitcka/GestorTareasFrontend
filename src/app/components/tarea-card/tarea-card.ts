@@ -1,10 +1,8 @@
-import { Component } from '@angular/core';
-import {NgClass} from '@angular/common';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: '[app-tarea-card]',
   standalone: true, 
-  imports: [NgClass],
   templateUrl: './tarea-card.html',
   styleUrl: './tarea-card.css',
 })
@@ -13,5 +11,6 @@ export class TareaCard {
   descripcion = 'Descripción';
   fechaCreacion = new Date().toLocaleDateString();
   fechaLimite = new Date().toLocaleDateString();
-  tipo = 'Completada'; 
+  tipo = 'Completada';
+  // @Input() tarea!: TareaDto; 
 }

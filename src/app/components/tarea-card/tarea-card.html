@@ -5,7 +5,7 @@
 <td>{{descripcion}}</td>
 <td>{{fechaCreacion}}</td>
 <td>{{fechaLimite}}</td>
-<td [ngClass]="tipo == 'Completada' ? 'bg-success' : 'bg-warning'" class="tipo">{{tipo}}</td>
+<td class="tipo" [class]="{'text-success': tipo == 'Completada', 'text-danger':tipo != 'Completada'}">{{tipo}}</td>
 <td>
     <button class="btn btn-success">
         <i class="bi bi-eye-fill" style="color: white;"></i>
