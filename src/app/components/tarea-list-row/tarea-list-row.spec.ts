@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AuthServiceTs } from './auth.service.ts';
+import { TareaListRow } from './tarea-list-row';
 
-describe('AuthServiceTs', () => {
-  let component: AuthServiceTs;
-  let fixture: ComponentFixture<AuthServiceTs>;
+describe('TareaListRow', () => {
+  let component: TareaListRow;
+  let fixture: ComponentFixture<TareaListRow>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AuthServiceTs],
+      imports: [TareaListRow],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(AuthServiceTs);
+    fixture = TestBed.createComponent(TareaListRow);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });

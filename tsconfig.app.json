@@ -8,7 +8,7 @@
   },
   "include": [
     "src/**/*.ts"
-  ],
+, "src/app/services/auth.service", "src/app/services/tarea.service", "src/app/models/tarea.model", "src/app/models/usuario.model"  ],
   "exclude": [
     "src/**/*.spec.ts"
   ]

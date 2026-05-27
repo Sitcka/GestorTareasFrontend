@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: '[app-tarea-card]',
+  selector: 'app-tarea-card',
   standalone: true, 
   templateUrl: './tarea-card.html',
   styleUrl: './tarea-card.css',

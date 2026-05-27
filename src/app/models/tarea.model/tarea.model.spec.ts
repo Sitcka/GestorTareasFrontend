@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TareaServiceTs } from './tarea.service.ts';
+import { TareaModelTs } from './tarea.model.js';
 
-describe('TareaServiceTs', () => {
-  let component: TareaServiceTs;
-  let fixture: ComponentFixture<TareaServiceTs>;
+describe('TareaModelTs', () => {
+  let component: TareaModelTs;
+  let fixture: ComponentFixture<TareaModelTs>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TareaServiceTs],
+      imports: [TareaModelTs],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(TareaServiceTs);
+    fixture = TestBed.createComponent(TareaModelTs);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });
