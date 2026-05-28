@@ -8,8 +8,8 @@ import { NgOptimizedImage } from "@angular/common";
   selector: 'app-login',
   standalone: true,
   imports: [FormsModule],
-  templateUrl: './login.html',
-  styleUrl: './login.css',
+  templateUrl: './login.component.html',
+  styleUrl: './login.component.css',
 })
 export class Login {
   email: string = "";

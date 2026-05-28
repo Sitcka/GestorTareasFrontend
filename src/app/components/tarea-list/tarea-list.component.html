@@ -10,6 +10,7 @@
           <th scope="col">Fecha de creación</th>
           <th scope="col">Fecha Límite</th>
           <th scope="col">Tipo</th>
+          <th scope="col">Detalles</th>
         </tr>
       </thead>
       <tbody class="table-group-divider align-middle">
@@ -20,5 +21,8 @@
         }
       </tbody>
     </table>
+    @if (tareaSeleccionada) {
+    <app-tarea-card (eliminarTarea)="onEliminarTarea($event)" (cerrarDetalles)="onCerrarDetalles()" [tarea]="tareaSeleccionada"></app-tarea-card>
+    }
   </div>
 </section>

@@ -4,7 +4,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 @Component({
   selector: 'app-navbar',
   imports: [RouterLink, RouterLinkActive],
-  templateUrl: './navbar.html',
-  styleUrl: './navbar.css'
+  templateUrl: './navbar.component.html',
+  styleUrl: './navbar.component.css'
 })
 export class Navbar {}

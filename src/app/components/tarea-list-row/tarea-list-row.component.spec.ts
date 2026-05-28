@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DashboardLayout } from './dashboard-layout';
+import { TareaListRow } from './tarea-list-row.component';
 
-describe('DashboardLayout', () => {
-  let component: DashboardLayout;
-  let fixture: ComponentFixture<DashboardLayout>;
+describe('TareaListRow', () => {
+  let component: TareaListRow;
+  let fixture: ComponentFixture<TareaListRow>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DashboardLayout],
+      imports: [TareaListRow],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(DashboardLayout);
+    fixture = TestBed.createComponent(TareaListRow);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });

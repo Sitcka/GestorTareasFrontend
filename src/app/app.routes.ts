@@ -2,9 +2,9 @@ import { Routes } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
 // import { AuthService } from './services/auth.service';
-import { Login } from './components/login/login';
-import { DashboardLayout } from './components/dashboard-layout/dashboard-layout';
-import { TareaList } from './components/tarea-list/tarea-list';
+import { Login } from './components/login/login.component';
+import { DashboardLayout } from './components/dashboard-layout/dashboard-layout.component';
+import { TareaList } from './components/tarea-list/tarea-list.component';
 // Importa aquí tus futuros componentes cuando los crees:
 // import { PerfilComponent } from './components/perfil/perfil.component';
 // import { ConfiguracionComponent } from './components/configuracion/configuracion.component';
