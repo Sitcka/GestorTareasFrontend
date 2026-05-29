@@ -3,7 +3,7 @@ import { TareaDto } from '../../models/tarea.model/tarea.model';
 
 @Component({
   selector: 'app-tarea-card',
-  // standalone: true, 
+  standalone: true, 
   templateUrl: './tarea-card.component.html',
   styleUrl: './tarea-card.component.css',
 })

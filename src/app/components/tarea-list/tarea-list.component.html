@@ -14,7 +14,8 @@
         </tr>
       </thead>
       <tbody class="table-group-divider align-middle">
-        @for (tarea of tareas; track tarea.id) {
+        <!-- ngUnit -->
+        @for (tarea of operaciones.tareas(); track tarea.id) {
         <tr app-tarea-list-row (verDetalles)="onVerDetalles($event)" [tarea]="tarea"></tr>
         }@empty {
         <p class="text-muted">¡Realiza una tarea!</p>
@@ -22,7 +23,8 @@
       </tbody>
     </table>
     @if (tareaSeleccionada) {
-    <app-tarea-card (eliminarTarea)="onEliminarTarea($event)" (cerrarDetalles)="onCerrarDetalles()" [tarea]="tareaSeleccionada"></app-tarea-card>
+    <app-tarea-card (eliminarTarea)="onEliminarTarea($event)" (cerrarDetalles)="onCerrarDetalles()"
+      [tarea]="tareaSeleccionada"></app-tarea-card>
     }
   </div>
 </section>
