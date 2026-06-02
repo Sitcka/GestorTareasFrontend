@@ -1,14 +1,18 @@
-<div class="card  mb-3" style="max-width: 18rem;">
-    <div class="card-body">
-        <h5 class="card-title text-center">{{ tarea.titulo }}</h5>
-        <p class="card-text"><b>Descripción:</b> {{ tarea.descripcion }}</p>
-        <p class="card-text"><b>Fecha de creación:</b> {{ tarea.fechaCreacion }}</p>
-        <p class="card-text"><b>Fecha límite:</b> {{ tarea.fechaLimite }}</p>
-        <p class="card-text"><b>Tipo:</b> {{ tarea.tipo }}</p>
-        <div class="d-flex justify-content-between">
-            <a href="#" class="btn btn-success">Editar</a>
-            <a class="btn btn-danger" (click)="onEliminar()">Eliminar</a>
-            <a class="btn btn-secondary" (click)="onCerrarDetalles()">Cerrar</a>
+@if (tareaSeleccionada) {
+<section class="col-md-12 col-xl-12 d-flex justify-content-center mt-5">
+    <div class=" card  mb-3" style="max-width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title text-center">{{ tareaSeleccionada.titulo }}</h5>
+            <p class="card-text"><b>Descripción:</b> {{ tareaSeleccionada.descripcion }}</p>
+            <p class="card-text"><b>Fecha de creación:</b> {{ tareaSeleccionada.fechaCreacion }}</p>
+            <p class="card-text"><b>Fecha límite:</b> {{ tareaSeleccionada.fechaLimite }}</p>
+            <p class="card-text"><b>Tipo:</b> {{ tareaSeleccionada.tipo }}</p>
+            <div class="d-flex justify-content-between">
+                <a href="#" class="btn btn-success">Editar</a>
+                <a class="btn btn-danger">Eliminar</a>
+                <!-- <a class="btn btn-secondary" (click)="onCerrarDetalles()">Cerrar</a> -->
+            </div>
         </div>
     </div>
-</div>
+</section>
+}

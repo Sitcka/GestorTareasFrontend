@@ -22,9 +22,5 @@
         }
       </tbody>
     </table>
-    @if (tareaSeleccionada) {
-    <app-tarea-card (eliminarTarea)="onEliminarTarea($event)" (cerrarDetalles)="onCerrarDetalles()"
-      [tarea]="tareaSeleccionada"></app-tarea-card>
-    }
   </div>
 </section>

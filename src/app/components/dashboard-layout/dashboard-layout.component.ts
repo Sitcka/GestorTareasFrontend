@@ -5,7 +5,7 @@ import { Header } from '../header/header';
 
 @Component({
   selector: 'app-dashboard-layout',
-  imports: [RouterOutlet, Navbar, Header, ],
+  imports: [RouterOutlet, Navbar, Header ],
 
   templateUrl: './dashboard-layout.component.html',
   styleUrl: './dashboard-layout.component.css',

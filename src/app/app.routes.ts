@@ -5,6 +5,7 @@ import { CanActivate, Router } from '@angular/router';
 import { Login } from './components/login/login.component';
 import { DashboardLayout } from './components/dashboard-layout/dashboard-layout.component';
 import { TareaList } from './components/tarea-list/tarea-list.component';
+import { TareaCard } from './components/tarea-card/tarea-card.component';
 // Importa aquí tus futuros componentes cuando los crees:
 // import { PerfilComponent } from './components/perfil/perfil.component';
 // import { ConfiguracionComponent } from './components/configuracion/configuracion.component';
@@ -31,7 +32,7 @@ export const routes: Routes = [
       { path: 'categorias', component: TareaList },
       { path: 'prioridades', component: TareaList },
       { path: 'hoy', component: TareaList },
-      { path: 'proximas', component: TareaList },
+      { path: 'tareas/:id', component: TareaCard }, // Ruta para detalles de tarea
       // Cuando crees los componentes de perfil y configuración, los cambias aquí:
       { path: 'configuracion', component: TareaList },
       { path: 'perfil', component: TareaList }

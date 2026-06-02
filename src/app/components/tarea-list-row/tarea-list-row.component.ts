@@ -15,7 +15,6 @@ export class TareaListRow {
  
   onVerDetalles() {
     this.verDetalles.emit(this.tarea.id);
-    
   }
   // 
 }

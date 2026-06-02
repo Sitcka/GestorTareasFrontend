@@ -12,7 +12,7 @@ export class TareaServiceTs {
     fechaCreacion: new Date().toLocaleDateString(),
     fechaLimite: new Date(Date.now() + (i + 1) * 86400000).toLocaleDateString(),
     tipo: i % 3 === 0 ? 'Simple' : i % 3 === 1 ? 'Recurrente' : 'Prioritaria',
-  })));
+  }))); 
 
   public readonly tareas = this._tareas.asReadonly();
 

@@ -1,25 +1,30 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { TareaDto } from '../../models/tarea.model/tarea.model';
+import { TareaServiceTs } from '../../services/tarea.service/tarea.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-tarea-card',
-  standalone: true, 
+  standalone: true,
   templateUrl: './tarea-card.component.html',
   styleUrl: './tarea-card.component.css',
 })
 export class TareaCard {
-  @Input() tarea!: TareaDto; 
-  @Output() cerrarDetalles = new EventEmitter<number>();
-  @Output() eliminarTarea = new EventEmitter<number>();
-
-  onEliminar() {
-    this.eliminarTarea.emit(this.tarea.id);
+  operaciones = inject(TareaServiceTs);
+  ruta = inject(ActivatedRoute);
+  router = inject(Router);
+  tareaSeleccionada: TareaDto | null = null;
+  ngOnInit() {
+    const id = Number(this.ruta.snapshot.paramMap.get('id'));
+    this.tareaSeleccionada = this.operaciones.tareas().find(tarea => tarea.id === id) || null;
   }
-  
-  onCerrarDetalles() {
-    this.cerrarDetalles.emit(this.tarea.id);
-    console.log('Cerrar detalles de la tarea con id:', this.tarea.id);
+  onVolverAtras(){
+    this.router.navigate(['/tareas']);
   }
 
-  
+
+
+
+
+
 }

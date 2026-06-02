@@ -6,18 +6,19 @@
 <td>{{tarea.fechaCreacion}}</td>
 <td>{{tarea.fechaLimite}}</td>
 @switch (tarea.tipo){
-    @case('Simple'){
-    <td class="tipo text-success">{{tarea.tipo}}</td>
-    }
-    @case('Recurrente'){
-    <td class="tipo text-warning">{{tarea.tipo}}</td>
-    }
-    @case('Prioritaria'){
-    <td class="tipo text-danger">{{tarea.tipo}}</td>
-    }
+@case('Simple'){
+<td class="tipo text-success">{{tarea.tipo}}</td>
+}
+@case('Recurrente'){
+<td class="tipo text-warning">{{tarea.tipo}}</td>
+}
+@case('Prioritaria'){
+<td class="tipo text-danger">{{tarea.tipo}}</td>
+}
 }
 <td>
-    <button class="btn btn-success" (click)="onVerDetalles()">
-        <i class="bi bi-eye-fill" style="color: white;"></i>
+    <button class="btn btn-success"  (click)="onVerDetalles()">
+        <i class="bi bi-eye-fill" style="color: white;">
+        </i>
     </button>
 </td>
