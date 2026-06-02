@@ -21,6 +21,10 @@ export class TareaCard {
   onVolverAtras(){
     this.router.navigate(['/tareas']);
   }
+  onEliminarTarea(id: number) {
+    this.operaciones.eliminarTarea(id);
+    this.router.navigate(['/tareas']); // Navega de vuelta a la lista de tareas después de eliminar
+  }
 
 
 

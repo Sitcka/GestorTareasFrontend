@@ -9,7 +9,7 @@
             <p class="card-text"><b>Tipo:</b> {{ tareaSeleccionada.tipo }}</p>
             <div class="d-flex justify-content-between">
                 <a href="#" class="btn btn-success">Editar</a>
-                <a class="btn btn-danger">Eliminar</a>
+                <a class="btn btn-danger" (click)="onEliminarTarea(tareaSeleccionada.id)">Eliminar</a>
                 <!-- <a class="btn btn-secondary" (click)="onCerrarDetalles()">Cerrar</a> -->
             </div>
         </div>
