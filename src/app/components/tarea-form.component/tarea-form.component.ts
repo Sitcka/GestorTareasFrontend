@@ -1,0 +1,30 @@
+import { Component, inject } from '@angular/core';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators, FormBuilder } from "@angular/forms";
+
+@Component({
+  selector: 'app-tarea-form',
+  standalone: true,
+  imports: [ReactiveFormsModule],
+  templateUrl: './tarea-form.component.html',
+  styleUrl: './tarea-form.component.css',
+})
+export class TareaFormComponent {
+  // FormBuilder no cambia el numero de instancias, solo te da una forma mas comoda de construir el mismo FormGroup y FormControl por debajo.
+  // Entonces lo dejare con FormBuilder por facilidad, pero se podría hacer exactamente lo mismo sin FormBuilder.
+  formularioInyeccion = inject(FormBuilder);
+  formulario: FormGroup = this.formularioInyeccion.group({
+    titulo: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(200)]],
+    descripcion: ['', [ Validators.minLength(50), Validators.maxLength(500)]],
+    fechaLimite: ['', [Validators.required]],
+    tipo: ['Simple', [Validators.required, Validators.pattern('^(Prioritaria|Recurrente|Simple)$')]],
+  });
+
+  onEnviarFormulario(){
+    if (this.formulario.invalid) {
+      console.log('Formulario no válido');
+    } else {
+      console.log(this.formulario.value);
+    }
+  }
+  
+}
