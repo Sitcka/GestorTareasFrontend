@@ -1,7 +1,16 @@
-<section>
-  <h2>Tareas</h2>
-  <div class="table-responsive small">
-    <table class="table table-striped table-sm">
+<section class="container mt-4 pt-4">
+
+  <!-- Toolbar con botón -->
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2 class="mb-0">Tareas</h2>
+    <button class="btn btn-success" (click)="onModalAbierto()">
+      + Nueva tarea
+    </button>
+  </div>
+
+  <!-- Contenido que se opaca cuando el modal esta abierto -->
+  <div class="table-responsive small mt-4 p-3 bg-dark rounded-3" [class.blurred]="modalAbierto()">
+    <table class="table table-dark table-hover">
       <thead>
         <tr>
           <th scope="col">#</th>
@@ -14,13 +23,27 @@
         </tr>
       </thead>
       <tbody class="table-group-divider align-middle">
-        <!-- ngUnit -->
         @for (tarea of operaciones.tareas(); track tarea.id) {
         <tr app-tarea-list-row (verDetalles)="onVerDetalles($event)" [tarea]="tarea"></tr>
-        }@empty {
+        } @empty {
         <p class="text-muted">¡Realiza una tarea!</p>
         }
       </tbody>
     </table>
   </div>
+
+  @if (modalAbierto()) {
+  <div class="modal-overlay d-flex align-items-center justify-content-center" (click)="dialogo()">
+    <div class="modal-dialog bg-white p-4 rounded shadow" style="max-width: 500px; width: 100%;"
+      (click)="$event.stopPropagation()">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h5 class="mb-0">Nueva tarea</h5>
+        <button type="button" class="btn-close" (click)="onModalCerrado()"></button>
+      </div>
+
+      <app-tarea-form></app-tarea-form>
+    </div>
+  </div>
+
+  }
 </section>

@@ -6,6 +6,7 @@ import { Login } from './components/login/login.component';
 import { DashboardLayout } from './components/dashboard-layout/dashboard-layout.component';
 import { TareaList } from './components/tarea-list/tarea-list.component';
 import { TareaCard } from './components/tarea-card/tarea-card.component';
+import { TareaFormComponent } from './components/tarea-form.component/tarea-form.component';
 // Importa aquí tus futuros componentes cuando los crees:
 // import { PerfilComponent } from './components/perfil/perfil.component';
 // import { ConfiguracionComponent } from './components/configuracion/configuracion.component';

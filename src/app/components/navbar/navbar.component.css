@@ -27,9 +27,9 @@
   font-weight: 500;
 }
 
-.sidebar .nav-link.active {
-  color: #2470dc;
-}
+/* .sidebar .nav-link.active {
+  color: red;
+} */
 
 .sidebar-heading {
   font-size: .75rem;

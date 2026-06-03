@@ -1,6 +1,7 @@
 @if (tareaSeleccionada) {
-<section class="col-md-12 col-xl-12 d-flex justify-content-center mt-5">
-    <div class=" card  mb-3" style="max-width: 18rem;">
+<section class="col-md-12 col-xl-12 d-flex justify-content-center mt-5 pt-5">
+    <i class="bi bi-arrow-left-circle-fill btn btn-black fs-2"(click)="onVolverAtras()"></i>
+    <div class=" text-bg-dark card  mb-3" style="max-width: 18rem;">
         <div class="card-body">
             <h5 class="card-title text-center">{{ tareaSeleccionada.titulo }}</h5>
             <p class="card-text"><b>Descripción:</b> {{ tareaSeleccionada.descripcion }}</p>
