@@ -1,8 +1,8 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal} from '@angular/core';
 import { TareaListRow } from '../tarea-list-row/tarea-list-row.component';
 import { TareaServiceTs } from '../../services/tarea.service/tarea.service';
 import { Router } from '@angular/router';
-import { TareaFormComponent } from '../tarea-form.component/tarea-form.component';
+import { TareaFormComponent } from '../tarea-form/tarea-form.component';
 
 @Component({
   selector: 'app-tarea-list',
@@ -14,9 +14,10 @@ import { TareaFormComponent } from '../tarea-form.component/tarea-form.component
 export class TareaList {
   // ActivatedRoute le permite a TareaCard leer el id de la tarea directamente desde la URL /tareas/:id, sin necesidad de recibir ese id como @Input desde TareaList.
   // PROPIEDADES
-   operaciones = inject(TareaServiceTs);
-   router = inject(Router);
-   modalAbierto = signal(false);
+  operaciones = inject(TareaServiceTs);
+  router = inject(Router);
+  modalAbierto = signal(false);
+
 
   onVerDetalles(id: number) {
     this.router.navigate(['/tareas', id]); // Navega a la ruta de detalles de tarea
@@ -30,15 +31,15 @@ export class TareaList {
   // Signal para almacenar las tareas
   // ngOnInit() 
 
-  onModalAbierto(){
+  onModalAbierto() {
     this.modalAbierto.set(true);
   }
 
-  onModalCerrado(){
+  onModalCerrado() {
     this.modalAbierto.set(false);
   }
 
-  dialogo(){
+  dialogo() {
     console.log('click overlay');
   }
 }

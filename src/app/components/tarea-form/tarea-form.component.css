@@ -1,0 +1,15 @@
+.form-control::placeholder {
+    color: white;
+}
+#fechaLimite:focus {
+  border-color: var(--bs-white) !important; 
+  box-shadow: none !important;                  
+}
+
+#fechaLimite {
+  color-scheme: dark; 
+}
+
+#fechaLimite::hover{
+    
+}

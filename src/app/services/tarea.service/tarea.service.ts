@@ -22,4 +22,26 @@ export class TareaServiceTs {
     this._tareas.update(tareas => tareas.filter(tarea => tarea.id !== id));
   }
 
+  crearTarea(tarea: Omit<TareaDto, 'id' | 'fechaCreacion'>) {
+    const nuevaTarea: TareaDto = {
+      id: this._tareas().length > 0 ? Math.max(...this._tareas().map(t => t.id)) + 1 : 1,
+      fechaCreacion: new Date().toLocaleDateString(),
+      titulo: tarea.titulo,
+      descripcion: tarea.descripcion,
+      fechaLimite: tarea.fechaLimite,
+      tipo: tarea.tipo,
+    };
+    this._tareas.update(tareas => [...tareas, nuevaTarea]);
+  }
+
+  actualizarTarea(id: number, tareaActualizada: Omit<TareaDto, 'id' | 'fechaCreacion'>) {
+    this._tareas.update(tareas => tareas.map(tarea => 
+      tarea.id === id ? { ...tarea, ...tareaActualizada } : tarea
+    ));
+  }
+
+  buscarTareaPorId(id: number): TareaDto | undefined {
+    return this._tareas().find(tarea => tarea.id === id);
+  }
+
 }

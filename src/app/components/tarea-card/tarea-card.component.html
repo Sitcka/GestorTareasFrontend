@@ -1,6 +1,6 @@
-@if (tareaSeleccionada) {
+@if (tareaSeleccionada && !editando) {
 <section class="col-md-12 col-xl-12 d-flex justify-content-center mt-5 pt-5">
-    <i class="bi bi-arrow-left-circle-fill btn btn-black fs-2"(click)="onVolverAtras()"></i>
+    <i class="bi bi-arrow-left-circle-fill btn btn-black fs-2" (click)="onVolverAtras()"></i>
     <div class=" text-bg-dark card  mb-3" style="max-width: 18rem;">
         <div class="card-body">
             <h5 class="card-title text-center">{{ tareaSeleccionada.titulo }}</h5>
@@ -9,11 +9,12 @@
             <p class="card-text"><b>Fecha límite:</b> {{ tareaSeleccionada.fechaLimite }}</p>
             <p class="card-text"><b>Tipo:</b> {{ tareaSeleccionada.tipo }}</p>
             <div class="d-flex justify-content-between">
-                <a href="#" class="btn btn-success">Editar</a>
+                <a class="btn btn-success" (click)="onEditar()">Editar</a>
                 <a class="btn btn-danger" (click)="onEliminarTarea(tareaSeleccionada.id)">Eliminar</a>
-                <!-- <a class="btn btn-secondary" (click)="onCerrarDetalles()">Cerrar</a> -->
             </div>
         </div>
     </div>
 </section>
-}
+}@else{
+<app-tarea-form  (formularioEnviado)="onCompletarEditar()"></app-tarea-form>
+} 
