@@ -1,32 +1,109 @@
 <form [formGroup]="formulario" (ngSubmit)="onEnviarFormulario()">
   <div class="mb-3">
     <label for="titulo" class="form-label">Titulo</label>
-    <input type="text" id="titulo" class="form-control shadow-none bg-secondary border-secondary text-white" formControlName="titulo" placeholder="Título de la tarea">
+    <input
+      type="text"
+      id="titulo"
+      class="form-control shadow-none bg-secondary border-secondary text-white"
+      formControlName="titulo"
+      placeholder="Título de la tarea" />
     <!-- FormControlName debe de coincidir con los nombres declarados en el FormGroup -->
   </div>
 
   <div class="mb-3">
     <label for="descripcion" class="form-label">Descripcion</label>
-    <textarea id="descripcion" class="form-control shadow-none bg-secondary border-secondary text-white" rows="3" formControlName="descripcion"
+    <textarea
+      id="descripcion"
+      class="form-control shadow-none bg-secondary border-secondary text-white"
+      rows="3"
+      formControlName="descripcion"
       placeholder="Describe la tarea"></textarea>
   </div>
 
   <div class="mb-3">
     <label for="fechaLimite" class="form-label">Fecha limite</label>
-    <input type="date" id="fechaLimite" class="form-control shadow-none bg-secondary border-secondary text-white" formControlName="fechaLimite">
+    <input
+      type="date"
+      id="fechaLimite"
+      class="form-control shadow-none bg-secondary border-secondary text-white"
+      formControlName="fechaLimite" />
+  </div>
+
+  <div class="mb-3">
+    <label for="prioridad" class="form-label">Prioridad</label>
+    <select
+      id="prioridad"
+      class="form-select shadow-none bg-secondary border-secondary text-white"
+      formControlName="prioridad">
+      <option value="0">Baja</option>
+      <option value="1">Media</option>
+      <option value="2">Alta</option>
+    </select>
   </div>
 
   <div class="mb-3">
     <label for="tipo" class="form-label">Tipo</label>
-    <select id="tipo" class="form-select shadow-none bg-secondary border-secondary text-white" formControlName="tipo">
+    <select
+      id="tipo"
+      class="form-select shadow-none bg-secondary border-secondary text-white"
+      formControlName="tipo">
       <option value="Simple">Simple</option>
       <option value="Recurrente">Recurrente</option>
       <option value="Prioritaria">Prioritaria</option>
     </select>
   </div>
 
-  <button type="submit" class="btn btn-success w-100" [disabled]="formulario.invalid">
-    <!-- formulario.invalid hace que el boton del formulario este deshabilitado si no cumple las reglas de validacion -->
-    Guardar tarea
-  </button>
+  @if (formulario.value.tipo === 'Prioritaria') {
+    <div class="mb-3">
+      <label for="nivelUrgencia" class="form-label">Nivel de urgencia</label>
+      <input
+        type="number"
+        id="nivelUrgencia"
+        class="form-control shadow-none bg-secondary border-secondary text-white"
+        formControlName="nivelUrgencia"
+        min="1"
+        placeholder="1" />
+    </div>
+  }
+
+  @if (formulario.value.tipo === 'Recurrente') {
+    <div class="mb-3">
+      <label for="intervaloDias" class="form-label">Intervalo en días</label>
+      <input
+        type="number"
+        id="intervaloDias"
+        class="form-control shadow-none bg-secondary border-secondary text-white"
+        formControlName="intervaloDias"
+        min="1"
+        placeholder="1" />
+    </div>
+  }
+
+  <div class="d-flex gap-2">
+    @if (tarea && !editMode) {
+      <button
+        type="button"
+        class="btn btn-outline-light flex-fill"
+        (click)="activarEdicion()">
+        Editar tarea
+      </button>
+    }
+
+    @if (tarea && editMode) {
+      <button
+        type="button"
+        class="btn btn-outline-secondary flex-fill"
+        (click)="cancelarEdicionLocal()">
+        Cancelar cambios
+      </button>
+    }
+
+    <button
+      type="submit"
+      class="btn btn-success flex-fill"
+      [disabled]="formulario.invalid || !editMode">
+      <!-- formulario.invalid hace que el boton del formulario este deshabilitado si no cumple las reglas de validacion -->
+      {{ tarea ? 'Guardar cambios' : 'Guardar tarea' }}
+    </button>
+  </div>
 </form>

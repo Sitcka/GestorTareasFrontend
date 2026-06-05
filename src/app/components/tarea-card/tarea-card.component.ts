@@ -1,9 +1,8 @@
- import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { TareaDto } from '../../models/tarea.model/tarea.model';
 import { TareaServiceTs } from '../../services/tarea.service/tarea.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TareaFormComponent } from '../tarea-form/tarea-form.component';
-
 
 @Component({
   selector: 'app-tarea-card',
@@ -19,39 +18,30 @@ export class TareaCard {
   router = inject(Router);
   editando = false;
   tareaSeleccionada: TareaDto | null = null;
-  ngOnInit() {
+
+  async ngOnInit() {
     const id = Number(this.ruta.snapshot.paramMap.get('id'));
-    this.tareaSeleccionada = this.operaciones.buscarTareaPorId(id) || null;
+    this.tareaSeleccionada = await this.operaciones.buscarTareaPorId(id) || null;
   }
+
   onVolverAtras() {
-    if (this.editando) {
-      console.log('Volviendo a detalles de tarea con id:', this.tareaSeleccionada?.id);
-     const id = Number(this.ruta.snapshot.paramMap.get('id'));
-     this.tareaSeleccionada = this.operaciones.buscarTareaPorId(id) || null;
-     this.editando = false;
-     this.router.navigate(['/tareas/', id]);
-    }
     this.router.navigate(['/tareas']);
   }
+
   onEliminarTarea(id: number) {
     this.operaciones.eliminarTarea(id);
     this.router.navigate(['/tareas']); // Navega de vuelta a la lista de tareas después de eliminar
   }
 
-
   onEditar() {
     this.editando = true;
   }
 
+  onCancelarEdicion() {
+    this.editando = false;
+  }
 
   onCompletarEditar() {
     this.editando = false;
   }
-
-
-
-
-
-
-
 }

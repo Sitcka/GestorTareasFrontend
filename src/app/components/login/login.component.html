@@ -10,29 +10,50 @@
                                     <img src="/images/GestorFondo.png" style="width: 185px;" alt="logo">
                                     <h4 class="mt-1 mb-5 pb-1 fw-bold">GESTOR DE TAREAS</h4>
                                 </div>
+
+                                <!-- Mensajes de éxito/error -->
+                                <div *ngIf="mensajeError" class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    {{ mensajeError }}
+                                </div>
+                                <div *ngIf="mensajeExito" class="alert alert-success alert-dismissible fade show" role="alert">
+                                    {{ mensajeExito }}
+                                </div>
+
                                 <form class="">
+                                    <!-- Campo Nombre solo en modo registro -->
+                                    <div *ngIf="modoRegistro" data-mdb-input-init class="form-outline">
+                                        <label class="form-label fw-bold" for="formNombre">Nombre Completo</label>
+                                        <input [(ngModel)]="nombre" name="nombre" type="text" id="formNombre" class="form-control"
+                                            placeholder="Tu nombre completo" />
+                                    </div>
+
                                     <div data-mdb-input-init class="form-outline">
                                         <label class="form-label fw-bold" for="form2Example11">Usuario</label>
-                                        <input [(ngModel)]="email" type="email" id="form2Example11" class="form-control"
+                                        <input [(ngModel)]="email" name="email" type="email" id="form2Example11" class="form-control"
                                             placeholder="alguien@ejemplo.com" />
                                     </div>
 
                                     <div data-mdb-input-init class="form-outline mb-4">
                                         <label class="form-label fw-bold" for="form2Example22">Contraseña</label>
-                                        <input [(ngModel)]="password" type="password" id="form2Example22" class="form-control" />
+                                        <input [(ngModel)]="password" name="password" type="password" id="form2Example22" class="form-control" />
                                     </div>
 
                                     <div class="text-center d-flex row mb-5 pt-2 ">
                                         <button (click)="onSubmit()" data-mdb-button-init data-mdb-ripple-init
-                                            class=" fw-bold btn btn-primary btn-block gradient-custom-2 mb-3" type="button">Login
+                                            class=" fw-bold btn btn-primary btn-block gradient-custom-2 mb-3" type="button">
+                                            {{ modoRegistro ? 'Crear Cuenta' : 'Login' }}
                                         </button>
-                                        <a class="text-muted text-decoration-none fw-bold" routerLink="/tareas">Olvide mi contraseña</a>
+                                        <a *ngIf="!modoRegistro" class="text-muted text-decoration-none fw-bold" routerLink="/tareas">Olvide mi contraseña</a>
                                     </div>
 
                                     <div class="d-flex align-items-center justify-content-center pb-4">
-                                        <p class="mb-0 me-2 fw-bold">¿No tienes cuenta?</p>
-                                        <button type="button" data-mdb-button-init data-mdb-ripple-init
-                                            class="btn btn-outline-danger fw-bold">Crear</button>
+                                        <p class="mb-0 me-2 fw-bold">
+                                            {{ modoRegistro ? '¿Ya tienes cuenta?' : '¿No tienes cuenta?' }}
+                                        </p>
+                                        <button (click)="toggleModo()" type="button" data-mdb-button-init data-mdb-ripple-init
+                                            class="btn btn-outline-danger fw-bold">
+                                            {{ modoRegistro ? 'Login' : 'Crear' }}
+                                        </button>
                                     </div>
                                 </form>
                             </div>

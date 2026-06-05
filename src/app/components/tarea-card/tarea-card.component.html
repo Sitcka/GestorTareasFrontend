@@ -1,20 +1,46 @@
 @if (tareaSeleccionada && !editando) {
-<section class="col-md-12 col-xl-12 d-flex justify-content-center mt-5 pt-5">
-    <i class="bi bi-arrow-left-circle-fill btn btn-black fs-2" (click)="onVolverAtras()"></i>
+  <section class="col-md-12 col-xl-12 d-flex justify-content-center mt-5 pt-5">
+    <i
+      class="bi bi-arrow-left-circle-fill btn btn-black fs-2"
+      (click)="onVolverAtras()"></i>
     <div class=" text-bg-dark card  mb-3" style="max-width: 18rem;">
-        <div class="card-body">
-            <h5 class="card-title text-center">{{ tareaSeleccionada.titulo }}</h5>
-            <p class="card-text"><b>Descripción:</b> {{ tareaSeleccionada.descripcion }}</p>
-            <p class="card-text"><b>Fecha de creación:</b> {{ tareaSeleccionada.fechaCreacion }}</p>
-            <p class="card-text"><b>Fecha límite:</b> {{ tareaSeleccionada.fechaLimite }}</p>
-            <p class="card-text"><b>Tipo:</b> {{ tareaSeleccionada.tipo }}</p>
-            <div class="d-flex justify-content-between">
-                <a class="btn btn-success" (click)="onEditar()">Editar</a>
-                <a class="btn btn-danger" (click)="onEliminarTarea(tareaSeleccionada.id)">Eliminar</a>
-            </div>
+      <div class="card-body">
+        <h5 class="card-title text-center">{{ tareaSeleccionada.titulo }}</h5>
+        <p class="card-text">
+          <b>Descripción:</b> {{ tareaSeleccionada.descripcion }}
+        </p>
+        <p class="card-text">
+          <b>Fecha de creación:</b> {{ tareaSeleccionada.fechaCreacion }}
+        </p>
+        <p class="card-text">
+          <b>Fecha límite:</b> {{ tareaSeleccionada.fechaLimite }}
+        </p>
+        <p class="card-text">
+          <b>Tipo:</b> {{ tareaSeleccionada.tipo ?? tareaSeleccionada.tipoTarea }}
+        </p>
+        <div class="d-flex justify-content-between">
+          <a class="btn btn-success" (click)="onEditar()">Editar</a>
+          <a class="btn btn-danger" (click)="onEliminarTarea(tareaSeleccionada.id)">Eliminar</a>
         </div>
+      </div>
     </div>
-</section>
-}@else{
-<app-tarea-form  (formularioEnviado)="onCompletarEditar()"></app-tarea-form>
-} 
+  </section>
+} @else if (tareaSeleccionada && editando) {
+  <section class="col-md-12 col-xl-12 d-flex justify-content-center mt-5 pt-5">
+    <i
+      class="bi bi-arrow-left-circle-fill btn btn-black fs-2"
+      (click)="onCancelarEdicion()"></i>
+
+    <div class=" text-bg-dark card  mb-3" style="max-width: 18rem;">
+      <div class="card-body p-4">
+        <h5 class="card-title text-center">Editar tarea</h5>
+
+        <app-tarea-form
+          [tarea]="tareaSeleccionada"
+          (formularioEnviado)="onCompletarEditar()">
+        </app-tarea-form>
+      </div>
+    </div>
+  </section>
+  
+}

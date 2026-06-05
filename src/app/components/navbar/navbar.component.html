@@ -2,7 +2,13 @@
   <div class=" offcanvas-md offcanvas-end bg-body-" tabindex="-1" id="sidebarMenu"
     aria-labelledby="sidebarMenuLabel">
     <div class="offcanvas-header">
-      <h5 class="offcanvas-title" id="sidebarMenuLabel ">Gestor tareas</h5>
+      <div class="d-flex flex-column w-100">
+        <h5 class="offcanvas-title" id="sidebarMenuLabel">Gestor tareas</h5>
+        <!-- Mostrar usuario actual -->
+        <small class="text-muted mt-2" *ngIf="usuarioActual()">
+          <i class="bi bi-person-fill"></i> {{ usuarioActual()?.nombre }}
+        </small>
+      </div>
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebarMenu"
         aria-label="Close"></button>
     </div>
@@ -27,21 +33,21 @@
           </li>
 
           <li class="nav-item">
-            <a class="nav-link d-flex" routerLink="/nueva" routerLinkActive="active">
+            <a class="nav-link d-flex" routerLink="/tareas" routerLinkActive="active">
               <i class="bi bi-plus-square"></i>
               Nueva tarea
             </a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link d-flex" routerLink="/completadas" routerLinkActive="active">
+            <a class="nav-link d-flex" routerLink="/tareas" routerLinkActive="active">
               <i class="bi bi-check2-square"></i>
               Completadas
             </a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link d-flex" routerLink="/pendientes" routerLinkActive="active">
+            <a class="nav-link d-flex" routerLink="/tareas" routerLinkActive="active">
               <i class="bi bi-hourglass-split"></i>
               Pendientes
             </a>
@@ -51,35 +57,35 @@
         <h6
           class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-body-secondary text-uppercase">
           <span>Organización</span>
-          <a class="link-secondary" routerLink="/categorias" aria-label="Ver categorías">
+          <a class="link-secondary" routerLink="/tareas" aria-label="Ver categorías">
             <i class="bi bi-folder-plus"></i>
           </a>
         </h6>
 
         <ul class="nav flex-column mb-auto">
           <li class="nav-item">
-            <a class="nav-link d-flex" routerLink="/categorias" routerLinkActive="active">
+            <a class="nav-link d-flex" routerLink="/tareas" routerLinkActive="active">
               <i class="bi bi-folder"></i>
               Categorías
             </a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link d-flex" routerLink="/prioridades" routerLinkActive="active">
+            <a class="nav-link d-flex" routerLink="/tareas" routerLinkActive="active">
               <i class="bi bi-flag"></i>
               Prioridades
             </a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link d-flex" routerLink="/hoy" routerLinkActive="active">
+            <a class="nav-link d-flex" routerLink="/tareas" routerLinkActive="active">
               <i class="bi bi-calendar-event"></i>
               Hoy
             </a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link d-flex" routerLink="/proximas" routerLinkActive="active">
+            <a class="nav-link d-flex" routerLink="/tareas" routerLinkActive="active">
               <i class="bi bi-calendar3"></i>
               Próximas
             </a>
@@ -90,17 +96,32 @@
 
         <ul class="nav flex-column mb-auto">
           <li class="nav-item">
-            <a class="nav-link d-flex" routerLink="/configuracion" routerLinkActive="active">
+            <a class="nav-link d-flex" routerLink="/tareas" routerLinkActive="active">
               <i class="bi bi-gear"></i>
-              Configuración
+              Configuracion
             </a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link d-flex" routerLink="/perfil" routerLinkActive="active">
+            <button
+              type="button"
+              class="nav-link d-flex w-100 border-0"
+              (click)="irAEditarPerfil()"
+            >
               <i class="bi bi-person-circle"></i>
-              Perfil
-            </a>
+              Editar Perfil
+            </button>
+          </li>
+
+          <li class="nav-item">
+            <button
+              type="button"
+              class="nav-link d-flex w-100 border-0 text-danger"
+              (click)="logout()"
+            >
+              <i class="bi bi-box-arrow-right"></i>
+              Logout
+            </button>
           </li>
         </ul>
       </nav>

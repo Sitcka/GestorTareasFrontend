@@ -1,0 +1,67 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header bg-primary text-white">
+          <h4 class="mb-0">Editar Perfil</h4>
+        </div>
+
+        <div class="card-body">
+          <!-- Mensajes de error/exito -->
+          <div *ngIf="mensajeError" class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{ mensajeError }}
+          </div>
+
+          <div *ngIf="mensajeExito" class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ mensajeExito }}
+          </div>
+
+          <!-- Formulario de datos basicos -->
+          <form>
+            <div class="mb-3">
+              <label for="nombre" class="form-label fw-bold">Nombre Completo</label>
+              <input
+                type="text"
+                class="form-control"
+                id="nombre"
+                [(ngModel)]="nombre"
+                name="nombre"
+                placeholder="Tu nombre completo"
+              />
+            </div>
+
+            <div class="mb-3">
+              <label for="email" class="form-label fw-bold">Email</label>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                [(ngModel)]="email"
+                name="email"
+                placeholder="tu@email.com"
+              />
+            </div>
+          </form>
+
+          <!-- Botones de accion -->
+          <div class="d-flex gap-2 mt-4">
+            <button
+              type="button"
+              class="btn btn-primary flex-grow-1"
+              (click)="guardarCambios()"
+            >
+              Guardar Cambios
+            </button>
+            <button
+              type="button"
+              class="btn btn-secondary flex-grow-1"
+              (click)="cancelar()"
+            >
+              Cancelar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -5,15 +5,15 @@
 <td>{{tarea.descripcion}}</td>
 <td>{{tarea.fechaCreacion}}</td>
 <td>{{tarea.fechaLimite}}</td>
-@switch (tarea.tipo){
+@switch (tarea.tipo ?? tarea.tipoTarea){
 @case('Simple'){
-<td class="tipo text-success">{{tarea.tipo}}</td>
+<td class="tipo text-success">{{tarea.tipo ?? tarea.tipoTarea}}</td>
 }
 @case('Recurrente'){
-<td class="tipo text-warning">{{tarea.tipo}}</td>
+<td class="tipo text-warning">{{tarea.tipo ?? tarea.tipoTarea}}</td>
 }
 @case('Prioritaria'){
-<td class="tipo text-danger">{{tarea.tipo}}</td>
+<td class="tipo text-danger">{{tarea.tipo ?? tarea.tipoTarea}}</td>
 }
 }
 <td>

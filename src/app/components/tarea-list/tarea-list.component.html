@@ -22,10 +22,14 @@
         </tr>
       </thead>
       <tbody class="table-group-divider align-middle">
-        @for (tarea of operaciones.tareas(); track tarea.id) {
+        @for (tarea of tareasVisibles(); track tarea.id) {
         <tr app-tarea-list-row (verDetalles)="onVerDetalles($event)" [tarea]="tarea"></tr>
         } @empty {
-        <p class="text-muted">¡Realiza una tarea!</p>
+        <tr>
+          <td colspan="7" class="text-center text-muted py-4">
+            No hay tareas asignadas a tu usuario. Crea la primera tarea para comenzar.
+          </td>
+        </tr>
         }
       </tbody>
     </table>
